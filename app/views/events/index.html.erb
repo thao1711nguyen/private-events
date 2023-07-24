@@ -1,0 +1,23 @@
+<h1>LET'S "EVENT"!</h1>
+
+<%= link_to "Create new event", new_event_path %>
+<%= link_to "My events", user_path %>
+
+<h2>Upcoming Events</h2>
+<ul>   
+    <% @future_events.each do |event| %>
+        <ul>
+            <li><%= link_to event.title, event %></li> 
+        </ul>
+    <% end %>
+    
+</ul>
+<h2>Past Events</h2>
+<ul>   
+    <% @past_events.each do |event| %>
+        <ul>
+            <li><%= link_to event.title, event %></li> 
+        </ul>
+    <% end %>
+    
+</ul>

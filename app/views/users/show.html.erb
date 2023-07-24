@@ -1,0 +1,36 @@
+
+<h2>Hello <%= current_user.username %></h2>
+<h3>Here are the list of the events you attended or will attend</h3>
+
+<h4>Past events</h4>
+<% current_user.attended_events.each do |event| %>
+    <% if event.date <= Date.current %> 
+        <li><%= link_to event.title, event %></li> 
+    <% end %>
+<% end %>
+<h4>Future events</h4>
+<% current_user.attended_events.each do |event| %>
+    <% if event.date > Date.current %> 
+        <li><%= link_to event.title, event %></li> 
+    <% end %>
+<% end %>
+
+
+<%# <h2>You "own" these events: </h2>
+        
+        <% current_user.creating_events.each do |event| %>
+            <%# <% if event.date <= Date.current %>
+                <%# <h4>Past events</h4>
+                <ul>
+                    <li><%= link_to event.title, event %>
+                <%# </ul>
+            <% else %>
+                <%# <h4>Future events</h4>
+                <ul>
+                    <li><%= link_to event.title, event %>
+                <%# </ul> 
+            <% end %>
+        <%# <% end %>  
+
+        
+        

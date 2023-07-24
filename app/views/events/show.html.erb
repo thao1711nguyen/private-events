@@ -1,0 +1,20 @@
+<h2>EVENT</h2>
+
+<%= render "shared/event", :event => @event %>
+<h4>Attendees</h4>
+<ul>
+    <% @event.attendees.each do |att| %>
+        <li><%= att.username %></li>
+    <% end %>
+</ul>
+
+
+<%= link_to "Attend", event_event_guests_path(@event), data: { turbo_method: "post" } %>
+<% if user_signed_in? &&  !@event_guest.nil? %>
+    <%= link_to "Not attend", event_event_guest_path(@event, @event_guest), data: {turbo_method: "delete" } %>
+<% end %>
+<br> 
+<br>
+
+<%= link_to "Edit event", edit_user_event_path(@event) %>
+<%= link_to "Delete event", user_event_path(@event), data: { turbo_method: "delete" } %>
